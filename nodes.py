@@ -87,10 +87,10 @@ class SkyworkUniPic:
             }
         }
 
-    RETURN_TYPES = ("AUDIO",)
-    RETURN_NAMES = ("output",)
+    RETURN_TYPES = ("IMAGE",)
+    RETURN_NAMES = ("samples",)
     FUNCTION = "generate"
-    CATEGORY = "Higgs Audio"
+    CATEGORY = "Skywork-UniPic"
 
     def generate(self, config, checkpoint, prompt, cfg_prompt, cfg, temperature, cfg_schedule, num_iter, grid_size, image_size):
         
@@ -142,3 +142,22 @@ class SkyworkUniPic:
         return (samples,)
 
 
+class SaveSkyworkUniPicImage:
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {
+                "image_path": ("STRING", {"default": "output.jpg"}),
+                "samples": ("IMAGE",),
+            }
+        }
+
+    RETURN_TYPES = ()
+    RETURN_NAMES = ()
+    FUNCTION = "save"
+    CATEGORY = "Skywork-UniPic"
+
+    def save(self, image_path, samples):
+        Image.fromarray(samples).save(image_path)
+        
+        return ()
