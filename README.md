@@ -19,3 +19,14 @@ cd ComfyUI-SkyworkUniPic
 pip install -r requirements.txt
 ```
 
+## Model
+
+### Download Pretrained Models
+
+Download the model checkpoints from [[🤗 SkyworkUniPic](https://huggingface.co/Skywork/Skywork-UniPic-1.5B)],
+It is recommended to use the following command to download the checkpoints
+
+```bash
+# pip install -U "huggingface_hub[cli]"
+huggingface-cli download Skywork/Skywork-UniPic-1.5B  --local-dir checkpoint --repo-type model
+```
