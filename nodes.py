@@ -8,6 +8,11 @@ import torch
 from torch.nn.utils.rnn import pad_sequence
 from einops import rearrange
 
+# Ensure package imports works and current directory is set
+import sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+os.chdir(os.path.dirname(os.path.abspath(__file__)))
+
 from src.builder import BUILDER
 from src.datasets.utils import crop2square
 
@@ -424,7 +429,7 @@ class Image2Text:
     FUNCTION = "generate"
     CATEGORY = "Skywork-UniPic"
 
-    def generate(self, config, checkpoint, image，prompt, image_size):
+    def generate(self, config, checkpoint, image, prompt, image_size):
         
         config = Config.fromfile(config)
         model = BUILDER.build(config.model).eval().cuda()
